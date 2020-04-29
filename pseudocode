@@ -1,0 +1,40 @@
+Variables
+    currentDay
+    currentTime
+    timeOfDay in hours
+    hourlyScheduleForm
+    Array hoursOfDay
+
+Header Jumbotron
+    h1 Work Day Scheduler
+    p description calendar app
+    p id=currentDay updates and shows currentDay
+End Jumbotron
+
+Container
+    table
+    for hoursOfDay.length
+        new tr = timeOfDay
+            new td = timeOfDay
+            new form = ""
+            new button = saveButton
+            tr.timeOfDay.append.(td.timeOfDay , form, saveButton)
+            saveButton.click(saveToLocalStorage)
+            form.formColorChanger(currentTime)
+    end for
+
+End Container
+
+function formColorChanger(currentTime)
+    if moment.js > currentTime
+            form.color(grey)
+    else if moment.js === currentTime
+        form.color(red)
+    else 
+        form.color(green)
+            
+            
+
+
+
+        
