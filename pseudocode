@@ -33,6 +33,8 @@ function formColorChanger(currentTime)
     else 
         form.color(green)
 
+End function 
+
 function saveButton(tr.form.text)
 
 Local.system(tr.form.text);
