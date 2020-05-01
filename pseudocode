@@ -11,19 +11,19 @@ Header Jumbotron
     p id=currentDay updates and shows currentDay
 End Jumbotron
 
-Container
-    table
+Script
+
+Container.append.table
+    
     for hoursOfDay.length
         new tr = timeOfDay
-            new td = timeOfDay
+            new td = time
             new form = ""
             new button = saveButton
-            tr.timeOfDay.append.(td.timeOfDay , form, saveButton)
+            tr.append.(time , form, saveButton)
             saveButton.click(saveToLocalStorage)
             form.formColorChanger(currentTime)
     end for
-
-End Container
 
 function formColorChanger(currentTime)
     if moment.js > currentTime
@@ -32,9 +32,13 @@ function formColorChanger(currentTime)
         form.color(red)
     else 
         form.color(green)
-            
-            
 
+function saveButton(tr.form.text)
 
+Local.system(tr.form.text);
+            
+End function    
+
+End Script
 
         
