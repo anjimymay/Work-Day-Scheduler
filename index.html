@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Day Scheduler</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--  <link rel="stylesheet" href="style.css"> -->  
+</head>
+<body>
+    <jumbotron>
+        <h1 class="text-center">Work Day Scheduler</h1>
+        <h3 class="text-center">A simple app to manage time day by day</h3>
+        <h4 id= "currentDay" class="text-center"></h4>
+        <div class="container"></div>
+    </jumbotron>
+    <script>
+        var currentDay;
+        var currentTime;
+        var timeOfDay;
+        var hourlyScheduleForm;
+        var hoursOfDay = [1, 2, 3, 4, 5, 6,
+                          7, 8, 9, 10, 11, 12,
+                          13, 14, 15, 16, 17, 18,
+                          19, 20, 21, 22, 23, 24];
+        var tHeaders = ["Time", "Description", "Save Button"];
+        var tHeaersIndex = [1, 2, 3];
+        var scope = "col";
+        var y = 12;
+
+        $(".container").append("<table>");
+        $("table").attr("class", "table");
+        $(".table").append("<thead>");
+        //Creating table headers
+        for(var i = 0; i < tHeaders.length; i++) {
+            var newHeader = $("<th>");
+            $("thead").append(newHeader);
+            $(tHeaders[i]).attr("scope", scope);
+            $(newHeader).text(tHeaders[i]);
+        }
+        //Creating table body
+        for(var j = 0; j < hoursOfDay.length; j++) {
+            var newTableRow = $("<tr>");
+            $(".table").append(newTableRow);
+            //appending cols to the row
+            for(var x = 0; x < tHeaders.length; x++) {
+                var newTableData = $("<td>");
+                newTableData.attr("scope", scope);
+                //appending new Time
+                if (hoursOfDay[j] === 0) {
+                    newTableRow.append($("<td>"));
+                    if  (hoursOfDay < 11){
+                        $("td").text(hoursOfDay[x].toString() + ":00 A.M.");
+                        $("td").attr("scope", scope);
+                    } else {
+                        $("td").text(toString(hoursOfDay[x - y]) + ":00 P.M.");
+                        $("td").attr("scope", scope);
+                    }
+                // appending new form
+                } else if (hoursOfDay[j] == 1) {
+                    newTableRow.append($("<input>"));
+                    $("input").attr("placeholder", "Do I have anything to do at this time?");
+                    $("input").attr("scope", scope);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
